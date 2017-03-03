@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">MyApplication01</string>
+    <string name="linearlayout">linearLayout</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="ACTION_GET_PROJECTS">ACTION_GET_PROJECTS</string>
+    <string name="ACTION_GET_TASKS">ACTION_GET_PROJECTS</string>
+</resources>

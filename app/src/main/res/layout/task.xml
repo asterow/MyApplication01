@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+
+    android:layout_margin="10dp"
+
+    app:cardBackgroundColor="@android:color/white"
+    app:cardCornerRadius="3dp"
+    app:cardElevation="2dp">
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:orientation="vertical" android:layout_width="match_parent" android:layout_height="170dp"
+
+        android:id="@+id/taskLayout">
+
+
+        <FrameLayout
+            android:layout_width="10dp"
+            android:layout_height="match_parent"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:background="@color/darkblues"
+            android:layout_gravity="end"
+            android:layout_marginLeft="5dp"
+            android:id="@+id/taskColor">
+        </FrameLayout>
+        <ViewSwitcher
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/switcherTaskEdit"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="25dp">
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/textViewTaskName"
+                    android:singleLine="true"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Display2"
+                    tools:text="TASK NAME"
+
+                    />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/textViewTaskDesc"
+                    android:layout_below="@+id/textViewTaskName"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                    android:scrollbars = "vertical"
+                    android:maxLines="3"
+                    tools:text="Task description" />
+                <FrameLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"></FrameLayout>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent">
+                <EditText
+                    android:id="@+id/editTextTaskName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+                    android:text="YOLOYLO"
+                    android:singleLine="true"
+                    style="@android:style/Widget.Holo.EditText" />
+                <EditText
+                    android:id="@+id/editTextTaskDesc"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/editTextTaskName"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                    android:maxLines="8"
+                    android:scrollbars = "vertical"
+                    android:text="YOLOYLO" />
+                <Button
+                    android:text="TODO"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentBottom="true"
+                    android:id="@+id/buttonTaskState"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Button"
+                    android:layout_marginBottom="2dp"
+                    style="@style/Widget.AppCompat.Button.Borderless" />
+                <Button
+                    android:text="DELETE"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_toRightOf="@id/buttonTaskState"
+                    android:id="@+id/buttonTaskDelete"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Button"
+                    android:layout_marginBottom="2dp"
+                    style="@style/Widget.AppCompat.Button.Borderless" />
+
+            </RelativeLayout>
+
+
+
+
+        </ViewSwitcher>
+
+        <Button
+            android:text="EDIT"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/buttonTaskEdit"
+            android:textAppearance="@style/TextAppearance.AppCompat.Button"
+            android:layout_marginRight="5dp"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true" />
+
+    </RelativeLayout>
+
+</android.support.v7.widget.CardView>
