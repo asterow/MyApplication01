@@ -78,6 +78,7 @@ public class TaskFragment extends Fragment {
                 recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
             }
             taskRecyclerViewAdapter = new TaskRecyclerViewAdapter(ProjectList.PROJECTS.get(mProjectPos).getListTache(), mListener);
+//            taskRecyclerViewAdapter = new TaskRecyclerViewAdapter(ProjectList.TASKS, mListener);
             recyclerView.setAdapter(taskRecyclerViewAdapter);
         }
         return view;
@@ -86,6 +87,12 @@ public class TaskFragment extends Fragment {
     public void add(int position, Tache tache) {
         //ProjectList.PROJECTS.get(mProjectPos).listTache.add(position, tache);
         taskRecyclerViewAdapter.add(position, tache);
+        linearLayoutManager.scrollToPositionWithOffset(0, 0);
+    }
+
+    public void notifyTasksChanged() {
+        //ProjectList.PROJECTS.get(mProjectPos).listTache.add(position, tache);
+        taskRecyclerViewAdapter.notifyDataSetChanged();
         linearLayoutManager.scrollToPositionWithOffset(0, 0);
     }
 

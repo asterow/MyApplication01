@@ -11,6 +11,7 @@ import android.widget.Toast;
 import com.example.astero.myapplication01.HTTPRequestAsyncTask;
 import com.example.astero.myapplication01.R;
 import com.example.astero.myapplication01.projectmanager.Fragment.ProjectFragment;
+import com.example.astero.myapplication01.projectmanager.ProjectManagerService;
 import com.example.astero.myapplication01.projectmanager.data.ProjectList;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -20,6 +21,12 @@ import com.google.gson.reflect.TypeToken;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.jackson.JacksonConverterFactory;
 
 
 public class ProjectListActivity extends AppCompatActivity implements HTTPRequestAsyncTask.AsyncResponse, ProjectFragment.OnListFragmentInteractionListener {
@@ -42,9 +49,15 @@ public class ProjectListActivity extends AppCompatActivity implements HTTPReques
         ft.addToBackStack(null);
         ft.commit();
 
-        
-        new HTTPRequestAsyncTask(this).execute(ProjectList.ACTION_GET_PROJECTS, "GET", ProjectList.SERVER_URL +
-                "/projects?max=-1");
+        ProjectList.getProjectsFromServer(projectFragment);
+
+
+
+
+
+
+//        new HTTPRequestAsyncTask(this).execute(ProjectList.ACTION_GET_PROJECTS, "GET", ProjectList.SERVER_URL +
+//                "/projects?max=-1");
     }
 
     @Override // CALLED WHEN CLICK ON FRAGMENT'S ITEM

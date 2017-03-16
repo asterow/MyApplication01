@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/activityStreamedDraw"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin">
+
+
+    <RelativeLayout
+        android:id="@+id/RLStreamedDraw"
+        android:layout_width="match_parent"
+        android:layout_height="300dp">
+
+    </RelativeLayout>
+
+    <EditText
+        android:id="@+id/editTextGuessDraw"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Answer..."
+        android:inputType="textPersonName"
+        android:layout_alignBaseline="@+id/buttonGuessDraw"
+        android:layout_alignBottom="@+id/buttonGuessDraw"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:id="@+id/buttonGuessDraw"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/RLStreamedDraw"
+        android:layout_marginStart="31dp"
+        android:layout_marginTop="6dp"
+        android:layout_toEndOf="@+id/editTextGuessDraw"
+        android:text="OK"
+        android:onClick="onClick"/>
+</RelativeLayout>

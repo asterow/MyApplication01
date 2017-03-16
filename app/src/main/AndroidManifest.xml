@@ -11,7 +11,8 @@
         android:label="@string/app_name"
         android:largeHeap="true"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme"
+        android:windowSoftInputMode="adjustResize">
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -20,12 +21,15 @@
             </intent-filter>
         </activity>
         <activity android:name=".CalcActivity" />
-        <activity android:name=".DrawingActivity" />
+        <activity android:name=".pictionary.DrawingActivity"/>
         <activity android:name=".ChangeColorActivity" />
         <activity android:name=".GiphyActivity" />
         <activity android:name=".projectmanager.Activity.MainProjectManagerActivity" />
         <activity android:name=".projectmanager.Activity.TaskListActivity" />
-        <activity android:name=".projectmanager.Activity.ProjectListActivity"></activity>
+        <activity android:name=".projectmanager.Activity.ProjectListActivity" />
+        <activity android:name=".websockets.WebsocketsMainActivity" />
+        <activity android:name=".pictionary.StreamedDrawActivity"/>
+        <activity android:name=".pictionary.PictionaryActivity"></activity>
     </application>
 
 </manifest>

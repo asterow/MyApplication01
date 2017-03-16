@@ -29,6 +29,9 @@ public class ProjectRecyclerViewAdapter extends RecyclerView.Adapter<ProjectRecy
         ProjectList.addProject(position, project);
         notifyItemInserted(position); //
     }
+    public void notifyProjectsChanged() {
+        notifyDataSetChanged();
+    }
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {

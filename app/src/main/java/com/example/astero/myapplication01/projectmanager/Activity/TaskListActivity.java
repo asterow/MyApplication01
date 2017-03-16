@@ -25,6 +25,8 @@ public class TaskListActivity extends AppCompatActivity implements HTTPRequestAs
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_task_list);
+        ProjectList.TASKS.clear();
+
         Intent i = getIntent();
         projectSelected = i.getIntExtra("project", 0);
         setTitle(ProjectList.PROJECTS.get(projectSelected).getName());
@@ -35,6 +37,8 @@ public class TaskListActivity extends AppCompatActivity implements HTTPRequestAs
         ft.replace(R.id.fragmentTaskList, taskFragment);
         ft.addToBackStack(null);
         ft.commit();
+        ProjectList.PROJECTS.get(projectSelected).getProjectsTasksFromServer(taskFragment);
+//        ProjectList.getProjectsTasksFromServer(taskFragment, ProjectList.PROJECTS.get(projectSelected).getId());
 
 
     }

@@ -13,7 +13,12 @@ import android.widget.Toast;
 import android.widget.Button;
 import android.widget.LinearLayout;
 
+import com.example.astero.myapplication01.pictionary.PictionaryActivity;
 import com.example.astero.myapplication01.projectmanager.Activity.MainProjectManagerActivity;
+import com.example.astero.myapplication01.websockets.WebsocketsMainActivity;
+
+
+
 
 public class MainActivity extends AppCompatActivity {
 
@@ -59,14 +64,14 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        Button btDraw = (Button) findViewById(R.id.buttonDraw);
-        btDraw.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(),DrawingActivity.class);
-                startActivity(i);
-            }
-        });
+//        Button btDraw = (Button) findViewById(R.id.buttonDraw);
+//        btDraw.setOnClickListener(new View.OnClickListener(){
+//            @Override
+//            public void onClick(View v) {
+//                Intent i = new Intent(getApplicationContext(),DrawingActivity.class);
+//                startActivity(i);
+//            }
+//        });
 
         Button btnGiphy = (Button) findViewById(R.id.btnGiphy);
         btnGiphy.setOnClickListener(new View.OnClickListener(){
@@ -121,12 +126,63 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(i);
 
                 break;
+            case R.id.buttonPictionary:
+                Intent j = new Intent(getApplicationContext(), PictionaryActivity.class);
+                startActivity(j);
+                break;
+            case R.id.buttonWebsocket:
+                Intent y = new Intent(getApplicationContext(), WebsocketsMainActivity.class);
+                startActivity(y);
+                break;
             default:
+                //System.out.println("mSocket is Ready");
                 Toast.makeText(view.getContext(), "Je suis un Toast", Toast.LENGTH_SHORT).show();
+//                Socket mSocket;
+//
+//                    try {
+//                        mSocket = IO.socket("http://192.168.0.125:8087");
+//                    } catch (URISyntaxException e) {
+//                    throw new RuntimeException(e);
+//                    }
+//
+//                if (mSocket != null) {
+//                    System.out.println("mSocket is Ready");
+////                    Toast.makeText(view.getContext(), "Je suis un Toast Ready", Toast.LENGTH_SHORT).show();
+//                    mSocket.emit("connection", "astero");
+//                    //mSocket.on(Socket.EVENT_CONNECT, onConnect);
+//
+//                }
+//                else {
+//                    System.out.println("mSocket is null");
+//                    Toast.makeText(view.getContext(), "Je suis un Toast Null", Toast.LENGTH_SHORT).show();
+//                }
 
+
+                break;
         }
 
 //        Log.v(TAG, "index : ");
 
     }
+
+//    private boolean isConnected = false;
+//    private Emitter.Listener onConnect = new Emitter.Listener() {
+//
+//        @Override
+//        public void call(Object... args) {
+//            System.out.println("Im on call");
+//
+//            runOnUiThread(new Runnable() {
+//                @Override
+//                public void run() {
+//                    if(!isConnected) {
+//                        Toast.makeText(getApplicationContext(), "Je suis un Toast call", Toast.LENGTH_SHORT).show();
+//
+//
+//                        isConnected = true;
+//                    }
+//                }
+//            });
+//        }
+//    };
 }

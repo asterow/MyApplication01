@@ -50,23 +50,15 @@
         android:layout_alignParentStart="true"
         android:layout_marginStart="39dp" />
 
-    <Button
-        android:text="Draw"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/buttonDraw"
-        android:layout_alignBaseline="@+id/buttonCalc"
-        android:layout_alignBottom="@+id/buttonCalc"
-        android:layout_toEndOf="@+id/buttonCalc"
-        android:layout_marginStart="36dp" />
+
 
     <Button
         android:text="Giphy"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/btnGiphy"
-        android:layout_alignBaseline="@+id/buttonDraw"
-        android:layout_alignBottom="@+id/buttonDraw"
+        android:layout_alignBaseline="@+id/buttonCalc"
+        android:layout_alignBottom="@+id/buttonCalc"
         android:layout_alignParentEnd="true"
         android:layout_marginEnd="16dp" />
 
@@ -76,8 +68,26 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="27dp"
         android:id="@+id/btnProjectManager"
-        android:layout_below="@+id/buttonDraw"
+        android:layout_below="@+id/buttonCalc"
         android:layout_toEndOf="@+id/buttonCalc"
+        android:onClick="onClick"/>
+
+    <Button
+        android:id="@+id/buttonWebsocket"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/btnProjectManager"
+        android:layout_marginEnd="14dp"
+        android:layout_toStartOf="@+id/btnProjectManager"
+        android:text="Websockets"
+        android:onClick="onClick"/>
+
+    <Button
+        android:id="@+id/buttonPictionary"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:text="Pictionary"
         android:onClick="onClick"/>
 
 

@@ -82,6 +82,10 @@ public class ProjectFragment extends Fragment {
         projectRecyclerViewAdapter.add(position, project);
         linearLayoutManager.scrollToPositionWithOffset(0, 0);
     }
+    public void notifyProjectsChanged() {
+        projectRecyclerViewAdapter.notifyProjectsChanged();
+        linearLayoutManager.scrollToPositionWithOffset(0, 0);
+    }
 
     @Override
     public void onAttach(Context context) {

@@ -22,14 +22,15 @@ import com.example.astero.myapplication01.projectmanager.data.ProjectList;
 import com.example.astero.myapplication01.projectmanager.data.ProjectList.Tache;
 
 import java.util.ArrayList;
+import java.util.List;
 
 
 public class TaskRecyclerViewAdapter extends RecyclerView.Adapter<TaskRecyclerViewAdapter.ViewHolder> {
 
-    private final ArrayList<Tache> mValues;
+    private final List<Tache> mValues;
     private final OnListFragmentInteractionListener mListener;
 
-    public TaskRecyclerViewAdapter(ArrayList<Tache> items, OnListFragmentInteractionListener listener) {
+    public TaskRecyclerViewAdapter(List<Tache> items, OnListFragmentInteractionListener listener) {
         mValues = items;
         mListener = listener;
     }
@@ -38,6 +39,10 @@ public class TaskRecyclerViewAdapter extends RecyclerView.Adapter<TaskRecyclerVi
 //        mValues.add(position, tache); // on insère le nouvel objet dans notre       liste d'article lié à l'adapter
         ProjectList.PROJECTS_MAP.get(tache.getProject().getId()).addTache(0, tache);
         notifyItemInserted(position); //
+    }
+
+    public void notifyTasksChanged() {
+        notifyDataSetChanged();
     }
 
     public void delete(Tache tache) {
@@ -102,7 +107,6 @@ public class TaskRecyclerViewAdapter extends RecyclerView.Adapter<TaskRecyclerVi
                             holder.editTextTaskDesc.setText(holder.mItem.getDesc());
                             holder.editTextTaskName.selectAll();
                             holder.mView.findViewById(R.id.taskLayout).setLayoutParams(new FrameLayout.LayoutParams(FrameLayout.LayoutParams.MATCH_PARENT, holder.mView.getHeight()*2));
-
                             break;
                         case "SAVE":
                             holder.buttonTaskEdit.setText("EDIT");

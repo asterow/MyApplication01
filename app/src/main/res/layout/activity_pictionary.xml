@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/activity_pictionary"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <EditText
+        android:id="@+id/editTextPseudoPictionary"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:hint="Pseudo" />
+
+    <ViewSwitcher
+        android:id="@+id/viewSwitcherPictionary"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <Button
+                android:id="@+id/buttonDraw"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/buttonStreamedDraw"
+                android:layout_alignBottom="@+id/buttonStreamedDraw"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="103dp"
+                android:onClick="onClick"
+                android:text="Draw" />
+
+            <Button
+                android:id="@+id/buttonStreamedDraw"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_marginEnd="67dp"
+                android:layout_marginTop="107dp"
+                android:layout_toStartOf="@+id/buttonDraw"
+                android:onClick="onClick"
+                android:text="Guess" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <EditText
+                android:id="@+id/editTextChooseWord"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="34dp"
+                android:layout_marginTop="168dp"
+                android:ems="10"
+                android:hint="Choose a word"
+                android:inputType="textPersonName" />
+
+            <Button
+                android:id="@+id/buttonStartDraw"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/editTextChooseWord"
+                android:layout_toEndOf="@+id/editTextChooseWord"
+                android:text="Start"
+                android:onClick="onClick"/>
+        </RelativeLayout>
+
+    </ViewSwitcher>
+
+</RelativeLayout>

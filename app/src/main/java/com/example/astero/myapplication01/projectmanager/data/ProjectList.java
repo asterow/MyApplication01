@@ -1,9 +1,21 @@
 package com.example.astero.myapplication01.projectmanager.data;
 
+import com.example.astero.myapplication01.projectmanager.Fragment.ProjectFragment;
+import com.example.astero.myapplication01.projectmanager.Fragment.TaskFragment;
+import com.example.astero.myapplication01.projectmanager.ProjectManagerService;
+
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.jackson.JacksonConverterFactory;
 
 /**
  * Created by astero on 28/02/2017.
@@ -15,6 +27,7 @@ public class ProjectList {
 
 
     public static final List<Project> PROJECTS = new ArrayList<Project>();
+    public static final List<Tache> TASKS = new ArrayList<Tache>();
 
     public static final Map<String, Project> PROJECTS_MAP = new HashMap();
 
@@ -25,11 +38,43 @@ public class ProjectList {
     public static final String ACTION_DELETE_TASK = "ACTION_DELETE_TASK";
     public static final String ACTION_POST_PROJECT = "ACTION_POST_PROJECT";
 
+    public static final Retrofit retrofit = new Retrofit.Builder()
+            .baseUrl(SERVER_URL)
+            .addConverterFactory(JacksonConverterFactory.create())
+            .build();
+    public static final ProjectManagerService projectManagerService = retrofit.create(ProjectManagerService.class);
 
     public static void addProject(int position, Project project) {
         PROJECTS.add(position, project);
         PROJECTS_MAP.put(project.id, project);
     }
+
+    public static void getProjectsFromServer(final ProjectFragment projectFragment) {
+
+
+        Call<List<Project>> listProject = projectManagerService.listProject();
+        listProject.enqueue(new Callback<List<Project>>() {
+            @Override
+            public void onResponse(Call<List<ProjectList.Project>> call, Response<List<Project>> response) {
+                PROJECTS.clear();
+                PROJECTS.addAll(response.body());
+                Collections.reverse(PROJECTS);
+                projectFragment.notifyProjectsChanged();
+                PROJECTS_MAP.clear();
+                PROJECTS_MAP.putAll(PROJECTS.stream().collect(
+                        Collectors.toMap(project -> project.getId(), project -> project)));
+//                PROJECTS.forEach();
+
+                System.out.println(PROJECTS.size());
+            }
+
+            @Override
+            public void onFailure(Call<List<ProjectList.Project>> call, Throwable t) {
+
+            }
+        });
+    }
+
 
 
 
@@ -37,7 +82,7 @@ public class ProjectList {
         private String id;
         private String name;
         private String desc;
-        private ArrayList<Tache> listTache = new ArrayList();
+        private List<Tache> listTache = new ArrayList();
         public static final Map<String, Tache> mapTache = new HashMap();
 
         public Project(String id, String name, String desc, ArrayList<Tache> listTache) {
@@ -55,16 +100,50 @@ public class ProjectList {
             mapTache.put(tache.id, tache);
         }
 
+
+
         public Project() {
+
 
         }
 
+        public  void getProjectsTasksFromServer(final TaskFragment taskFragment) {
+//            Retrofit retrofit = new Retrofit.Builder()
+//                    .baseUrl(SERVER_URL)
+//                    .addConverterFactory(JacksonConverterFactory.create())
+//                    .build();
+//            ProjectManagerService service = retrofit.create(ProjectManagerService.class);
 
-        public ArrayList<Tache> getListTache() {
+            Call<List<Tache>> listProject = projectManagerService.listTask(id);
+            listProject.enqueue(new Callback<List<Tache>>() {
+                @Override
+                public void onResponse(Call<List<ProjectList.Tache>> call, Response<List<Tache>> response) {
+                    if (response.isSuccessful()) {
+                        listTache.clear();
+                        listTache.addAll(response.body());
+                        Collections.reverse(listTache);
+//                        listTache.
+                        taskFragment.notifyTasksChanged();
+                        System.out.println("listTache :" + listTache.toString());
+                    }
+                    else
+                        System.out.println("Negative Response !!! Project_id : " + id);
+
+                }
+
+                @Override
+                public void onFailure(Call<List<ProjectList.Tache>> call, Throwable t) {
+
+                }
+            });
+        }
+
+
+        public List<Tache> getListTache() {
             return listTache;
         }
 
-        public void setListTache(ArrayList<Tache> listTache) {
+        public void setListTache(List<Tache> listTache) {
             this.listTache = listTache;
         }
 
