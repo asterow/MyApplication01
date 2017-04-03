@@ -79,8 +79,8 @@ public class PictionaryActivity extends AppCompatActivity {
     private void connectWebSocket() {
         URI uri;
         try {
-//            uri = new URI("ws://10.0.2.2:5000");
-            uri = new URI("ws://node-simple-ws.herokuapp.com");
+            uri = new URI("ws://10.0.2.2:5000");
+//            uri = new URI("ws://node-simple-ws.herokuapp.com");
 
 //            uri = new URI("ws://192.168.0.125:8081");
         } catch (URISyntaxException e) {
@@ -105,7 +105,7 @@ public class PictionaryActivity extends AppCompatActivity {
             @Override
             public void onMessage(String s) {
                 final String message = s;
-                System.out.println("MESSAGE RECEIVED : " + message);
+//                System.out.println("MESSAGE RECEIVED : " + message);
                 try {
                     JsonNode jsonNode = mapper.readTree(message);
                     if (jsonNode.has("action"))
